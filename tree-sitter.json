@@ -1,0 +1,40 @@
+{
+    "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+    "grammars": [
+        {
+            "name": "logcat",
+            "camelcase": "TreeSitterLogcat",
+            "title": "Android Tree-sitter Logcat",
+            "scope": "source.logcat",
+            "file-types": [
+                "log",
+                "logcat"
+            ],
+            "injection-regex": "^logcat$",
+            "class-name": "TreeSitterLogcat"
+        }
+    ],
+    "metadata": {
+        "version": "0.0.1",
+        "license": "MIT",
+        "description": "Android Logcat Tree-sitter parser",
+        "authors": [
+            {
+                "name": "vinnom",
+                "email": "vinnom.2d@gmail.com"
+            }
+        ],
+        "links": {
+            "repository": "https://github.com/vinnom/tree-sitter-logcat"
+        }
+    },
+    "bindings": {
+        "c": true,
+        "go": true,
+        "node": true,
+        "python": true,
+        "rust": true,
+        "swift": true,
+        "zig": false
+    }
+}
