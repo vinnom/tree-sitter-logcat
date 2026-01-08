@@ -12,7 +12,7 @@ const IDS = "\\s+(?:(\\w+)\\s+)?(\\w+)\\s+(\\w+)";
 const CONTENT = "\\s+(.*?):(.*)";
 
 function logPattern(levelChar) {
-    return new RustRegex(
+    return new RegExp(
         DATE + "\\s+" + TIME + IDS + "\\s+" + levelChar + CONTENT,
     );
 }

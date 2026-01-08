@@ -1,12 +1,69 @@
 [
-    {
-        "type": "source_file",
-        "named": true,
-        "root": true,
-        "fields": {}
-    },
-    {
-        "type": "hello",
-        "named": false
+  {
+    "type": "lines",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "any_non_log_line",
+          "named": true
+        },
+        {
+          "type": "debug_line",
+          "named": true
+        },
+        {
+          "type": "error_line",
+          "named": true
+        },
+        {
+          "type": "fatal_line",
+          "named": true
+        },
+        {
+          "type": "info_line",
+          "named": true
+        },
+        {
+          "type": "verbose_line",
+          "named": true
+        },
+        {
+          "type": "warning_line",
+          "named": true
+        }
+      ]
     }
+  },
+  {
+    "type": "any_non_log_line",
+    "named": true
+  },
+  {
+    "type": "debug_line",
+    "named": true
+  },
+  {
+    "type": "error_line",
+    "named": true
+  },
+  {
+    "type": "fatal_line",
+    "named": true
+  },
+  {
+    "type": "info_line",
+    "named": true
+  },
+  {
+    "type": "verbose_line",
+    "named": true
+  },
+  {
+    "type": "warning_line",
+    "named": true
+  }
 ]

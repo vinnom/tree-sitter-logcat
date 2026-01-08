@@ -1,22 +1,123 @@
 {
-    "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
-    "name": "logcat",
-    "rules": {
-        "source_file": {
-            "type": "STRING",
-            "value": "hello"
-        }
+  "name": "tree_sitter_logcat",
+  "rules": {
+    "lines": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "verbose_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "debug_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "info_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "warning_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "error_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "fatal_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "any_non_log_line"
+          }
+        ]
+      }
     },
-    "extras": [
-        {
-            "type": "PATTERN",
-            "value": "\\s"
+    "verbose_line": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "(\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s+(?:(\\w+)\\s+)?(\\w+)\\s+(\\w+)\\s+V\\s+(.*?):(.*)"
         }
-    ],
-    "conflicts": [],
-    "precedences": [],
-    "externals": [],
-    "inline": [],
-    "supertypes": [],
-    "reserved": {}
+      }
+    },
+    "debug_line": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "(\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s+(?:(\\w+)\\s+)?(\\w+)\\s+(\\w+)\\s+D\\s+(.*?):(.*)"
+        }
+      }
+    },
+    "info_line": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "(\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s+(?:(\\w+)\\s+)?(\\w+)\\s+(\\w+)\\s+I\\s+(.*?):(.*)"
+        }
+      }
+    },
+    "warning_line": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "(\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s+(?:(\\w+)\\s+)?(\\w+)\\s+(\\w+)\\s+W\\s+(.*?):(.*)"
+        }
+      }
+    },
+    "error_line": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "(\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s+(?:(\\w+)\\s+)?(\\w+)\\s+(\\w+)\\s+E\\s+(.*?):(.*)"
+        }
+      }
+    },
+    "fatal_line": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PREC",
+        "value": 1,
+        "content": {
+          "type": "PATTERN",
+          "value": "(\\d{2}-\\d{2})\\s+(\\d{2}:\\d{2}:\\d{2}\\.\\d{3})\\s+(?:(\\w+)\\s+)?(\\w+)\\s+(\\w+)\\s+F\\s+(.*?):(.*)"
+        }
+      }
+    },
+    "any_non_log_line": {
+      "type": "PATTERN",
+      "value": ".+"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
 }
+
